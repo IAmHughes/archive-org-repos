@@ -1,7 +1,7 @@
 {
-  "name": "user-access-report",
+  "name": "archive-org-repos",
   "version": "1.0.0",
-  "description": "Generate a csv of a given user's access in an Enterprise",
+  "description": "Archive a list of repositories in an organization",
   "main": "user-access-report.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,9 +9,11 @@
   "author": "IAmHughes, jwiebalk",
   "license": "MIT",
   "dependencies": {
-    "@octokit/graphql": "*",
+    "@octokit/rest": "*",
+    "csv-parser": "*",
     "dotenv": "*",
     "yargs": "*",
-    "fs": "*"
+    "fs": "*",
+    "csv": "*"
   }
 }
