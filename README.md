@@ -8,7 +8,7 @@ This Node script can be used on GitHub.com and GitHub Enterprise Server to archi
   - `npm install`
 - Create `.env` with needed variables based on `.env.example`
 - Run the script and define the user
-  - `node archive-org-repos.js --csv <your-repos.csv>`
+  - `node archive-org-repos.js --csv <repos.csv>`
 
 ## Caveats
 This script requires that the `GITHUB_TOKEN` provided have the scopes listed above, and the user creating the token needs to be an owner of the organization where the repositories live.
