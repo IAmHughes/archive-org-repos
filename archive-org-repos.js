@@ -33,8 +33,7 @@ async function archiveRepos () {
     } catch (error) {
       if (error.status === 403) {
         console.log(`Repo: ${row.organization}/${row.repository} is already archived`)
-      }
-      else if (error.status === 404) {
+      } else if (error.status === 404) {
         console.log(`Failed to archive ${row.organization}/${row.repository}`)
       } else {
         console.log(`Another error occured:\n ${error}`)
