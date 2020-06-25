@@ -21,12 +21,24 @@ async function archiveRepos () {
   const csvPipe = fs.createReadStream(argv.csv).pipe(csv())
   csvPipe.on('data', async (row) => {
     try {
-      octokit.repos.update({
+      await octokit.repos.update({
         owner: row.organization,
-        repo: row.repository
+        repo: row.repository,
+        archived: true
+      }).then(({ status }) => {
+        if (status === 200) {
+          console.log(`Successfully archived ${row.organization}/${row.repository}`)
+        }
       })
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      if (error.status === 403) {
+        console.log(`Repo: ${row.organization}/${row.repository} is already archived`)
+      }
+      else if (error.status === 404) {
+        console.log(`Failed to archive ${row.organization}/${row.repository}`)
+      } else {
+        console.log(`Another error occured:\n ${error}`)
+      }
     }
   })
 }
